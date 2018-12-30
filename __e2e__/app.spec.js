@@ -312,15 +312,8 @@ describe('Application launch', () => {
       logs.forEach(log =>
         console.log(`Message: ${log.message}\nSource: ${log.source}\nLevel: ${log.level}`)
       );
-      expect(logs.length).toEqual(2);
-      const [electronWarning, formDataWarning] = logs;
-      expect(electronWarning.source).toBe('console-api');
-      expect(electronWarning.level).toBe('WARNING');
-      expect(
-        electronWarning.message.indexOf(
-          'Electron Security Warning (Insecure Content-Security-Policy)'
-        ) > 0
-      ).toBeTruthy();
+      expect(logs.length).toEqual(1);
+      const [formDataWarning] = logs;
       expect(formDataWarning.source).toBe('worker');
       expect(formDataWarning.level).toBe('WARNING');
       expect(
